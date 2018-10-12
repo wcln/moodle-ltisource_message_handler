@@ -9,7 +9,7 @@ This plugin is required to receive Western Canada Learning Network (WCLN) LTI co
 - The folder name within the source directory should be "wcln".  
 - If neccessary, edit 'wcln/lib.php' to set the value of the constant 'WCLN_ENDPOINT' to the endpoint URL of your LTI provider.  
 
-or  
+**or**  
 
 - Login to your Moodle site as an admin and go to Administration -> Site administration -> Plugins -> Install plugins.  
 - Upload the ZIP file.  
