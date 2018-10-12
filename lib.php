@@ -64,9 +64,15 @@ function ltisource_wcln_add_instance_hook() {
 
 function ltisource_wcln_before_launch() {
   echo '<script>
-    var script = window.parent.document.createElement("script");
-    script.type = "text/JavaScript";
-    script.innerHTML = \'document.getElementById("contentframe").style.border = "none";window.addEventListener("message", function(event){document.getElementById("contentframe").height=event.data;document.getElementById("contentframe").style.height=event.data +"px";window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;});\';
-    window.parent.document.body.appendChild(script);
+      var script = window.parent.document.createElement("script");
+      script.type = "text/JavaScript";
+      script.innerHTML = \'\' +
+      \'document.getElementById("contentframe").style.border = "none";\' +
+      \'window.addEventListener("message", function(event) {\' +
+        \'document.getElementById("contentframe").height=event.data;\' +
+        \'document.getElementById("contentframe").style.height=event.data +"px";\' +
+        \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
+      \'});\';
+      window.parent.document.body.appendChild(script);
     </script>';
 }
