@@ -23,5 +23,3 @@
  */
 
 $string['pluginname'] = "Western Canada Learning Network LTI Plugin";
-$string['addwcln'] = "Add WCLN LTI Book";
-$string['addwcln_help'] = "Add a book from Western Canada Learning Network.";

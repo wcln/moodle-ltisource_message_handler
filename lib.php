@@ -22,57 +22,31 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-function ltisource_wcln_myCustomRequest($data) {
-    $data->body;         // The raw LTI request XML body.
-    $data->xml;          // A SimpleXMLElement of the XML body.
-    $data->messageid;    // The value of the <imsx_messageIdentifier> element in the request.
-    $data->messagetype;  // The message type.
-    $data->consumerkey;  // OAuth consumer key.
-    $data->sharedsecret; // The shared secret used to verify the request body.
+// Set to the current endpoint of the WCLN LTI provider.
+define('WCLN_ENDPOINT', 'https://bclearningnetwork.com/local/LTI/request.php');
 
-    // Do your custom work here.
+/*
+ * Called before LTI content is launched.
+ * Outputs a script to the LTI iFrame which outputs another script to the parent window.
+ * The final outputted script will be used to receive messages from within the iFrame and will affect elements outside the iFrame.
+ * The purpose of this function is to circumvent cross origin policies.
+ */
+function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
 
-    // Throw exceptions on error, they will be sent back appropriately.
-
-    // When done, echo out your response XML.
-    $responsexml = lti_get_response_xml(
-        'success',
-        'wcln handled',
-        $data->messageid,
-        $data->messagetype
-    );
-
-    echo $responsexml->asXML();
-}
-
-function ltisource_wcln_get_types() {
-    $types   = array();
-    $types[] = (object) array(
-        'modclass' => MOD_CLASS_ACTIVITY,
-        'type'     => 'lti&amp;type=wcln',
-        'typestr'  => get_string('addwcln', 'ltisource_wcln'),
-        'help'     => get_string('addwcln_help', 'ltisource_wcln'),
-    );
-    return $types;
-}
-
-function ltisource_wcln_add_instance_hook() {
-    // Do custom work here.
-    // echo '<script>alert()</script>';
-    // echo 'test';
-}
-
-function ltisource_wcln_before_launch() {
-  echo '<script>
-      var script = window.parent.document.createElement("script");
-      script.type = "text/JavaScript";
-      script.innerHTML = \'\' +
-      \'document.getElementById("contentframe").style.border = "none";\' +
-      \'window.addEventListener("message", function(event) {\' +
-        \'document.getElementById("contentframe").height=event.data;\' +
-        \'document.getElementById("contentframe").style.height=event.data +"px";\' +
-        \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
-      \'});\';
-      window.parent.document.body.appendChild(script);
-    </script>';
+  // Only output the script and change the iFrame if the endpoint is going to WCLN.
+  // We don't want to affect other LTI content.
+  if ($endpoint == constant('WCLN_ENDPOINT')) {
+    echo '<script>
+        var script = window.parent.document.createElement("script");
+        script.type = "text/JavaScript";
+        script.innerHTML = \'\' +
+        \'document.getElementById("contentframe").style.border = "none";\' +
+        \'window.addEventListener("message", function(event) {\' +
+          \'document.getElementById("contentframe").height=event.data;\' +
+          \'document.getElementById("contentframe").style.height=event.data +"px";\' +
+          \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
+        \'});\';
+        window.parent.document.body.appendChild(script);
+      </script>';
+  }
 }
