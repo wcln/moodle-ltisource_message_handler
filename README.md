@@ -15,4 +15,4 @@ This plugin is required to receive Western Canada Learning Network (WCLN) LTI co
 - Upload the ZIP file.  
 
 
-Created by Colin Bernard (colinjbernard@hotmail.com) for Western Canada Learning Network (wcln.ca).  
+Created by Colin Bernard (colinjbernard@hotmail.com) for Western Canada Learning Network (https://bclearningnetwork.com).  
