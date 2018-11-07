@@ -40,12 +40,15 @@ function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
         var script = window.parent.document.createElement("script");
         script.type = "text/JavaScript";
         script.innerHTML = \'\' +
-        \'document.getElementById("contentframe").style.border = "none";\' +
-        \'window.addEventListener("message", function(event) {\' +
+        \'var iframe = document.getElementById("contentframe");\' +
+        \'iframe.style.border = "none";\' +
+        \'iframe.setAttribute("scrolling", "no");\' +
+        \'window.addEventListener("message", resizeIframe);\' +
+        \'function resizeIframe() {\' +
           \'document.getElementById("contentframe").height=event.data;\' +
           \'document.getElementById("contentframe").style.height=event.data +"px";\' +
           \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
-        \'});\';
+        \'}\';
         window.parent.document.body.appendChild(script);
       </script>';
   }
