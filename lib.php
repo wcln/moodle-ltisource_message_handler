@@ -23,7 +23,8 @@
  */
 
 // Set to the current endpoint of the WCLN LTI provider.
-define('WCLN_ENDPOINT', 'https://bclearningnetwork.com/local/LTI/request.php');
+define('WCLN_ENDPOINT', 'https://wcln.sd23.bc.ca/local/LTI/request.php');
+define('WCLN_ENDPOINT_PAGE', 'https://wcln.sd23.bc.ca/local/LTI/page.php');
 
 /*
  * Called before LTI content is launched.
@@ -35,7 +36,7 @@ function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
 
   // Only output the script and change the iFrame if the endpoint is going to WCLN.
   // We don't want to affect other LTI content.
-  if ($endpoint == constant('WCLN_ENDPOINT')) {
+  if ($endpoint == constant('WCLN_ENDPOINT') || $endpoint == constant("WCLN_ENDPOINT_PAGE")) {
     echo '<script>
         var script = window.parent.document.createElement("script");
         script.type = "text/JavaScript";
