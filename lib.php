@@ -23,8 +23,8 @@
  */
 
 // Set to the current endpoint of the WCLN LTI provider.
-define('WCLN_ENDPOINT', 'https://wcln.sd23.bc.ca/local/LTI/request.php');
-define('WCLN_ENDPOINT_PAGE', 'https://wcln.sd23.bc.ca/local/LTI/page.php');
+define('WCLN_ENDPOINT', 'https://wcln.ca/local/LTI/request.php');
+define('WCLN_ENDPOINT_PAGE', 'https://wcln.ca/local/LTI/page.php');
 
 /*
  * Called before LTI content is launched.
