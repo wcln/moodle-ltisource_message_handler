@@ -45,7 +45,7 @@ function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
         \'iframe.style.border = "none";\' +
         \'iframe.setAttribute("scrolling", "no");\' +
         \'window.addEventListener("message", resizeIframe);\' +
-        \'function resizeIframe() {\' +
+        \'function resizeIframe(event) {\' +
           \'document.getElementById("contentframe").height=event.data;\' +
           \'document.getElementById("contentframe").style.height=event.data +"px";\' +
           \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
