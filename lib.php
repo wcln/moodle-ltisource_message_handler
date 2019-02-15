@@ -22,9 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// Set to the current endpoint of the WCLN LTI provider.
-define('WCLN_ENDPOINT', 'https://wcln.ca/local/LTI/request.php');
-define('WCLN_ENDPOINT_PAGE', 'https://wcln.ca/local/LTI/page.php');
 
 /*
  * Called before LTI content is launched.
@@ -34,23 +31,19 @@ define('WCLN_ENDPOINT_PAGE', 'https://wcln.ca/local/LTI/page.php');
  */
 function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
 
-  // Only output the script and change the iFrame if the endpoint is going to WCLN.
-  // We don't want to affect other LTI content.
-  if ($endpoint == constant('WCLN_ENDPOINT') || $endpoint == constant("WCLN_ENDPOINT_PAGE")) {
-    echo '<script>
-        var script = window.parent.document.createElement("script");
-        script.type = "text/JavaScript";
-        script.innerHTML = \'\' +
-        \'var iframe = document.getElementById("contentframe");\' +
-        \'iframe.style.border = "none";\' +
-        \'iframe.setAttribute("scrolling", "no");\' +
-        \'window.addEventListener("message", resizeIframe);\' +
-        \'function resizeIframe(event) {\' +
-          \'document.getElementById("contentframe").height=event.data;\' +
-          \'document.getElementById("contentframe").style.height=event.data +"px";\' +
-          \'window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;\' +
-        \'}\';
-        window.parent.document.body.appendChild(script);
-      </script>';
-  }
+  echo '<script>
+      var script = window.parent.document.createElement("script");
+      script.type = "text/JavaScript";
+      script.innerHTML = \'\' +
+      \'var iframe = document.getElementById("contentframe");\' +
+      \'iframe.style.border = "none";\' +
+      \'iframe.setAttribute("scrolling", "no");\' +
+      \'window.addEventListener("message", resizeIframe);\' +
+      \'function resizeIframe(event) {\' +
+        \'document.getElementById("contentframe").height=event.data;\' +
+        \'document.getElementById("contentframe").style.height=event.data +"px";\' +
+      \'}\';
+      window.parent.document.body.appendChild(script);
+    </script>';
+
 }
