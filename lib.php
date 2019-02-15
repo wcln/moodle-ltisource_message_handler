@@ -18,16 +18,26 @@
  * Internal library for WCLN LTI Source Plugin.
  *
  * @package    ltisource_message_handler
- * @copyright  2019 Colin Bernard {@link http://wcln.ca}
+ * @copyright  2019 Colin Bernard {@link https://wcln.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 
-/*
- * Called before LTI content is launched.
- * Outputs a script to the LTI iFrame which outputs another script to the parent window.
- * The final outputted script will be used to receive messages from within the iFrame and will affect elements outside the iFrame.
- * The purpose of this function is to circumvent cross origin policies.
+/**
+ * Implementation of before_launch callback. (https://docs.moodle.org/dev/Callbacks)
+ *
+ * Injects a script to launch.php which writes an LTI message handler script
+ * to view.php.
+ *
+ * The message handler script (js/message_handler.js) accepts messages from within an LTI
+ * iframe and allows resizing the iframe and other functionality.
+ *
+ * Parameters are not used, but could be used to modify the function to only output the script
+ * for certain conditions.
+ *
+ * @param  string $instance
+ * @param  string $endpoint
+ * @param  array $requestparams
  */
 function ltisource_message_handler_before_launch($instance, $endpoint, $requestparams) {
   global $CFG;
