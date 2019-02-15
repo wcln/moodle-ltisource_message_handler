@@ -17,6 +17,10 @@ The main purpose of this plugin is to allow iFrame resizing. The LTI iFrames in 
 - Login to your Moodle site as an admin and go to Administration -> Site administration -> Plugins -> Install plugins.  
 - Upload the ZIP file.  
 
+**or (Recommended)**  
+
+- Download this plugin from the [Moodle Plugin Directory](https://moodle.org/plugins/ltisource_message_handler).  
+
 ### Usage:  
 ```
 // Send message to LMS to resize the iframe.
@@ -28,4 +32,4 @@ Possible message subjects:
 
 I should be adding more subjects as I continue development.
 
-Created by Colin Bernard (colinjbernard@hotmail.com) for Western Canada Learning Network (https://wcln.ca).  
+Created by Colin Bernard (colinjbernard@hotmail.com) for [Western Canada Learning Network](https://wcln.ca).  
