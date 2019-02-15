@@ -40,6 +40,5 @@
  * @param  array $requestparams
  */
 function ltisource_message_handler_before_launch($instance, $endpoint, $requestparams) {
-  global $CFG;
-  echo '<script>'.file_get_contents("$CFG->wwwroot/mod/lti/source/message_handler/js/message_handler.js").'</script>';
+  echo '<script>'.file_get_contents('source/message_handler/js/message_handler.js').'</script>';
 }
