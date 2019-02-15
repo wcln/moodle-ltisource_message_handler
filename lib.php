@@ -30,20 +30,6 @@
  * The purpose of this function is to circumvent cross origin policies.
  */
 function ltisource_message_handler_before_launch($instance, $endpoint, $requestparams) {
-
-  echo '<script>
-      var script = window.parent.document.createElement("script");
-      script.type = "text/JavaScript";
-      script.innerHTML = \'\' +
-      \'var iframe = document.getElementById("contentframe");\' +
-      \'iframe.style.border = "none";\' +
-      \'iframe.setAttribute("scrolling", "no");\' +
-      \'window.addEventListener("message", resizeIframe);\' +
-      \'function resizeIframe(event) {\' +
-        \'document.getElementById("contentframe").height=event.data;\' +
-        \'document.getElementById("contentframe").style.height=event.data +"px";\' +
-      \'}\';
-      window.parent.document.body.appendChild(script);
-    </script>';
-
+  global $CFG;
+  echo '<script>'.file_get_contents("$CFG->wwwroot/mod/lti/source/message_handler/js/message_handler.js").'</script>';
 }

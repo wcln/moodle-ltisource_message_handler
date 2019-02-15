@@ -23,8 +23,8 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-$plugin->version   = 2018101200; // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2019021400; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2017111300; // Requires this Moodle version.
 $plugin->component = 'ltisource_message_handler'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v1.0';
+$plugin->release = 'v2.0';
