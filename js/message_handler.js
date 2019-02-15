@@ -1,4 +1,3 @@
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,58 +14,57 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Injects two functions into consumer site which can receive messages from the consumer.
+ * Contains functions which listen for incoming messages from an LTI provider.
  *
  * @package    ltisource_message_handler
  * @copyright  2019 Colin Bernard {@link https://wcln.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+require(['jquery'], function($) {
 
-var messageHandlerScript = window.parent.document.createElement('script');
-messageHandlerScript.type = 'text/javascript';
-messageHandlerScript.innerHTML = 'monitorLtiMessages();\n\n' + ltiMessageHandler.toString() + '\n' + monitorLtiMessages.toString();
-window.parent.document.body.appendChild(messageHandlerScript);
+  monitorLtiMessages();
 
-/**
- * Handles incoming messages.
- * @param  {[object]} e A message event.
- */
-function ltiMessageHandler(e) {
+  /**
+   * Handles incoming messages.
+   * @param  {object} e A message event.
+   */
+  function ltiMessageHandler(e) {
 
-  try {
-    var message = JSON.parse(e.data);
-    switch (message.subject) {
-      case 'lti.frameResize':
-        let height = message.height;
-        if (height <= 0) height = 1;
+    try {
+      var message = JSON.parse(e.data);
+      switch (message.subject) {
+        case 'lti.frameResize':
+          let height = message.height;
+          if (height <= 0) height = 1;
 
-        let iframe = document.getElementById('contentframe');
-        if (iframe) {
-          if (typeof height === 'number') {
-            height = height + 'px';
+          let iframe = document.getElementById('contentframe');
+          if (iframe) {
+            if (typeof height === 'number') {
+              height = height + 'px';
+            }
+            iframe.height = height;
+            iframe.style.height = height;
+            iframe.style.border = 'none';
           }
-          iframe.height = height;
-          iframe.style.height = height;
-          iframe.style.border = 'none';
-        }
-        break;
+          break;
 
-      case 'lti.scrollToTop':
-        $('html, body').animate({
-          scrollTop: $('#contentframe').offset().top
-         }, 'fast');
-        break;
+        case 'lti.scrollToTop':
+          $('html, body').animate({
+            scrollTop: $('#contentframe').offset().top
+           }, 'fast');
+          break;
+      }
+    } catch (err) {
+      (console.error || console.log).call(console, 'invalid message received from');
     }
-  } catch (err) {
-    (console.error || console.log).call(console, 'invalid message received from');
   }
-}
 
-/**
- * Adds an event listener to the window to listen for LTI messages.
- */
-function monitorLtiMessages() {
-  window.addEventListener('message', function(e) {
-    ltiMessageHandler(e);
-  });
-}
+  /**
+   * Adds an event listener to the window to listen for LTI messages.
+   */
+  function monitorLtiMessages() {
+    window.addEventListener('message', function(e) {
+      ltiMessageHandler(e);
+    });
+  }
+});
