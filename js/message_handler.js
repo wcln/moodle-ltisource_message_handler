@@ -24,7 +24,7 @@
 
 var messageHandlerScript = window.parent.document.createElement('script');
 messageHandlerScript.type = 'text/javascript';
-messageHandlerScript.innerHTML = 'monitorLtiMessages();' + ltiMessageHandler.toString() + monitorLtiMessages.toString();
+messageHandlerScript.innerHTML = 'monitorLtiMessages();\n\n' + ltiMessageHandler.toString() + '\n' + monitorLtiMessages.toString();
 window.parent.document.body.appendChild(messageHandlerScript);
 
 /**
