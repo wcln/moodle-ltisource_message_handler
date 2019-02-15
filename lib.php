@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Internal library for WCLN LTI Source Plugin.
  *
- * @package    ltisource_wcln
- * @copyright  2018 Colin Bernard {@link http://bclearningnetwork.com}
+ * @package    ltisource_message_handler
+ * @copyright  2019 Colin Bernard {@link http://wcln.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,7 +29,7 @@
  * The final outputted script will be used to receive messages from within the iFrame and will affect elements outside the iFrame.
  * The purpose of this function is to circumvent cross origin policies.
  */
-function ltisource_wcln_before_launch($instance, $endpoint, $requestparams) {
+function ltisource_message_handler_before_launch($instance, $endpoint, $requestparams) {
 
   echo '<script>
       var script = window.parent.document.createElement("script");

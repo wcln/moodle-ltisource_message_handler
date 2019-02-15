@@ -17,7 +17,7 @@
 /**
  * Version details.
  *
- * @package    ltisource_wcln
+ * @package    ltisource_message_handler
  * @copyright  2018 Colin Bernard {@link http://bclearningnetwork.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,6 +25,6 @@
 defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2018101200; // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2017111300; // Requires this Moodle version.
-$plugin->component = 'ltisource_wcln'; // Full name of the plugin (used for diagnostics).
+$plugin->component = 'ltisource_message_handler'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v1.0';

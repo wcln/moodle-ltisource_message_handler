@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
+ * Language file.
  *
- * @package    ltisource_wcln
- * @copyright  2018 Colin Bernard {@link http://bclearningnetwork.com}
+ * @package    ltisource_message_handler
+ * @copyright  2019 Colin Bernard {@link https://wcln.ca}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = "Western Canada Learning Network LTI Plugin";
+$string['pluginname'] = "LTI Message Handler Plugin";
