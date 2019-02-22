@@ -23,11 +23,14 @@ The main purpose of this plugin is to allow iFrame resizing. The LTI iFrames in 
 ### Usage:  
 Once the plugin is installed on the tool consumer site, the tool provider may communicate with it as follows.  
 ```
-// Send message to the tool consumer to resize the iframe. Height will be accepted as an integer or a string.
+// Send a message to the tool consumer to resize the iframe. Height will be accepted as an integer or a string.
 window.parent.postMessage(JSON.stringify({subject: 'lti.frameResize', height: 1000}), '*');
 
-// Send message to the tool consumer to resize the iframe.
+// Send a message to the tool consumer to resize the iframe.
 window.parent.postMessage(JSON.stringify({subject: 'lti.scrollToTop'}), '*');
+
+// Send a message to the tool consumer to remove the iframe border.
+window.parent.postMessage(JSON.stringify({subject: 'lti.removeBorder'}), '*');
 ```
 For example, if a tool provider is returning a page 'index.html' to be displayed in the iframe, they should add a JavaScript file similar to above.  
 
@@ -36,6 +39,7 @@ For example, if a tool provider is returning a page 'index.html' to be displayed
 Possible message subjects:  
 - lti.frameResize  
 - lti.scrollToTop  
+- lti.removeBorder
 
 I should be adding more subjects as I continue development.
 

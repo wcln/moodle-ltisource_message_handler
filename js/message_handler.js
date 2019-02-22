@@ -22,6 +22,7 @@
  */
 require(['jquery'], function($) {
 
+  // Add the event listener.
   monitorLtiMessages();
 
   /**
@@ -30,32 +31,42 @@ require(['jquery'], function($) {
    */
   function ltiMessageHandler(e) {
 
-    try {
-      var message = JSON.parse(e.data);
-      switch (message.subject) {
-        case 'lti.frameResize':
-          let height = message.height;
-          if (height <= 0) height = 1;
+    // Parse the message into an object.
+    var message = JSON.parse(e.data);
 
-          let iframe = document.getElementById('contentframe');
-          if (iframe) {
-            if (typeof height === 'number') {
-              height = height + 'px';
-            }
-            iframe.height = height;
-            iframe.style.height = height;
-            iframe.style.border = 'none';
+    // Retrieve the LTI iframe.
+    var iframe = document.getElementById('contentframe');
+
+    switch (message.subject) {
+
+      // Update the height of the iframe.
+      case 'lti.frameResize':
+        var height = message.height;
+        if (height <= 0) {
+          height = 1;
+        }
+        if (iframe) {
+          if (typeof height === 'number') {
+            height = height + 'px';
           }
-          break;
+          iframe.height = height;
+          iframe.style.height = height;
+        }
+        break;
 
-        case 'lti.scrollToTop':
-          $('html, body').animate({
-            scrollTop: $('#contentframe').offset().top
-           }, 'fast');
-          break;
-      }
-    } catch (err) {
-      (console.error || console.log).call(console, 'invalid message received from');
+      // Scroll to the top of the iframe.
+      case 'lti.scrollToTop':
+        $('html, body').animate({
+          scrollTop: $('#contentframe').offset().top
+         }, 'fast');
+        break;
+
+      // Remove the iframe border.
+      case 'lti.removeBorder':
+        if (iframe) {
+          iframe.style.border = 'none';
+        }
+        break;
     }
   }
 
@@ -63,8 +74,16 @@ require(['jquery'], function($) {
    * Adds an event listener to the window to listen for LTI messages.
    */
   function monitorLtiMessages() {
+
+    // Listen for all messages to this window.
     window.addEventListener('message', function(e) {
-      ltiMessageHandler(e);
+
+      // Check if the incoming message is from the LTI iframe.
+      if (e.source.frameElement && e.source.frameElement.id === 'contentframe') {
+
+        // Handle the message.
+        ltiMessageHandler(e);
+      }
     });
   }
 });
