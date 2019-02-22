@@ -22,6 +22,7 @@
  */
 require(['jquery'], function($) {
 
+  // Add the event listener.
   monitorLtiMessages();
 
   /**
@@ -31,7 +32,11 @@ require(['jquery'], function($) {
   function ltiMessageHandler(e) {
 
     try {
+
+      // Parse the message into an object.
       var message = JSON.parse(e.data);
+
+      // Retrieve the LTI iframe.
       var iframe = document.getElementById('contentframe');
 
       switch (message.subject) {
@@ -73,9 +78,16 @@ require(['jquery'], function($) {
    * Adds an event listener to the window to listen for LTI messages.
    */
   function monitorLtiMessages() {
+
+    // Listen for all messages to this window.
     window.addEventListener('message', function(e) {
-      console.log(e);
-      ltiMessageHandler(e);
+
+      // Check if the incoming message is from the LTI iframe.
+      if (e.source.frameElement && e.source.frameElement.id === 'contentframe') {
+
+        // Handle the message.
+        ltiMessageHandler(e);
+      }
     });
   }
 });
