@@ -31,46 +31,42 @@ require(['jquery'], function($) {
    */
   function ltiMessageHandler(e) {
 
-    try {
+    // Parse the message into an object.
+    var message = JSON.parse(e.data);
 
-      // Parse the message into an object.
-      var message = JSON.parse(e.data);
+    // Retrieve the LTI iframe.
+    var iframe = document.getElementById('contentframe');
 
-      // Retrieve the LTI iframe.
-      var iframe = document.getElementById('contentframe');
+    switch (message.subject) {
 
-      switch (message.subject) {
-
-        // Update the height of the iframe.
-        case 'lti.frameResize':
-          var height = message.height;
-          if (height <= 0) height = 1;
-
-          if (iframe) {
-            if (typeof height === 'number') {
-              height = height + 'px';
-            }
-            iframe.height = height;
-            iframe.style.height = height;
+      // Update the height of the iframe.
+      case 'lti.frameResize':
+        var height = message.height;
+        if (height <= 0) {
+          height = 1;
+        }
+        if (iframe) {
+          if (typeof height === 'number') {
+            height = height + 'px';
           }
-          break;
+          iframe.height = height;
+          iframe.style.height = height;
+        }
+        break;
 
-        // Scroll to the top of the iframe.
-        case 'lti.scrollToTop':
-          $('html, body').animate({
-            scrollTop: $('#contentframe').offset().top
-           }, 'fast');
-          break;
+      // Scroll to the top of the iframe.
+      case 'lti.scrollToTop':
+        $('html, body').animate({
+          scrollTop: $('#contentframe').offset().top
+         }, 'fast');
+        break;
 
-        // Remove the iframe border.
-        case 'lti.removeBorder':
-          if (iframe) {
-            iframe.style.border = 'none';
-          }
-          break;
-      }
-    } catch (err) {
-      (console.error || console.log).call(console, 'invalid message received from');
+      // Remove the iframe border.
+      case 'lti.removeBorder':
+        if (iframe) {
+          iframe.style.border = 'none';
+        }
+        break;
     }
   }
 
