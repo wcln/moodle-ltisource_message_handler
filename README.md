@@ -6,19 +6,21 @@ This Moodle LTI Source plugin allows communication between an LTI tool and a con
 The main purpose of this plugin is to allow iFrame resizing. The LTI iFrames in Moodle are laughably small and impossible to view course content in. With this plugin installed, an LTI tool provider may send messages to the tool consumer instructing it to resize the iFrame.  
 
 ### Installation:  
-- Download this repository.  
-- Extract the ZIP to 'mod/lti/source/'.  
-- The folder name within the source directory should be "message_handler".  
-- Login to your Moodle site as an administrator and install the plugin.
+**Recommended**  
+
+- Download this plugin from the [Moodle Plugin Directory](https://moodle.org/plugins/ltisource_message_handler).  
 
 **or**  
 
 - Login to your Moodle site as an admin and go to Administration -> Site administration -> Plugins -> Install plugins.  
 - Upload the ZIP file.  
 
-**or (Recommended)**  
+**or**  
 
-- Download this plugin from the [Moodle Plugin Directory](https://moodle.org/plugins/ltisource_message_handler).  
+- Download this repository.  
+- Extract the ZIP to 'mod/lti/source/'.  
+- The folder name within the source directory should be "message_handler".  
+- Login to your Moodle site as an administrator and install the plugin.
 
 ### Usage:  
 Once the plugin is installed on the tool consumer site, the tool provider may communicate with it as follows.  
