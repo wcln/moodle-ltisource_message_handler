@@ -32,6 +32,8 @@ require(['jquery'], function($) {
 
     try {
       let message = JSON.parse(e.data);
+      let iframe = document.getElementById('contentframe');
+
       switch (message.subject) {
 
         // Update the height of the iframe.
@@ -39,7 +41,6 @@ require(['jquery'], function($) {
           let height = message.height;
           if (height <= 0) height = 1;
 
-          let iframe = document.getElementById('contentframe');
           if (iframe) {
             if (typeof height === 'number') {
               height = height + 'px';
@@ -58,7 +59,9 @@ require(['jquery'], function($) {
 
         // Remove the iframe border.
         case 'lti.removeBorder':
-          iframe.style.border = 'none';
+          if (iframe) {
+            iframe.style.border = 'none';
+          }
           break;
       }
     } catch (err) {
@@ -71,6 +74,7 @@ require(['jquery'], function($) {
    */
   function monitorLtiMessages() {
     window.addEventListener('message', function(e) {
+      console.log(e);
       ltiMessageHandler(e);
     });
   }
