@@ -33,6 +33,8 @@ require(['jquery'], function($) {
     try {
       let message = JSON.parse(e.data);
       switch (message.subject) {
+
+        // Update the height of the iframe.
         case 'lti.frameResize':
           let height = message.height;
           if (height <= 0) height = 1;
@@ -44,14 +46,19 @@ require(['jquery'], function($) {
             }
             iframe.height = height;
             iframe.style.height = height;
-            iframe.style.border = 'none';
           }
           break;
 
+        // Scroll to the top of the iframe.
         case 'lti.scrollToTop':
           $('html, body').animate({
             scrollTop: $('#contentframe').offset().top
            }, 'fast');
+          break;
+
+        // Remove the iframe border.
+        case 'lti.removeBorder':
+          iframe.style.border = 'none';
           break;
       }
     } catch (err) {
