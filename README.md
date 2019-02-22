@@ -45,7 +45,7 @@ I should be adding more subjects as I continue development.
 
 ### Screenshots:
 **An LTI lesson WITHOUT using this plugin:**  
-![LTI lesson without plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_2.png)
+![LTI lesson without plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_3.png)
 
 **An LTI lesson that utilizes this plugin:**  
 ![LTI lesson with plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_1.png)
