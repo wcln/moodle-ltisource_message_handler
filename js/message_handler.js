@@ -31,7 +31,7 @@ require(['jquery'], function($) {
   function ltiMessageHandler(e) {
 
     try {
-      var message = JSON.parse(e.data);
+      let message = JSON.parse(e.data);
       switch (message.subject) {
         case 'lti.frameResize':
           let height = message.height;
