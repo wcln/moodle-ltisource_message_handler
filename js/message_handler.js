@@ -31,8 +31,8 @@ require(['jquery'], function($) {
   function ltiMessageHandler(e) {
 
     try {
-      let message = JSON.parse(e.data);
-      let iframe = document.getElementById('contentframe');
+      var message = JSON.parse(e.data);
+      var iframe = document.getElementById('contentframe');
 
       switch (message.subject) {
 
