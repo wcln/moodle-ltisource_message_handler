@@ -43,4 +43,4 @@ Possible message subjects:
 
 I should be adding more subjects as I continue development.
 
-Created by Colin Bernard (colinjbernard@hotmail.com) for [Western Canada Learning Network](https://wcln.ca).  
+Created by Colin Bernard (colinjbernard@hotmail.com) for [Western Canadian Learning Network](https://wcln.ca).  
