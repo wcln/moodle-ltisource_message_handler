@@ -43,7 +43,7 @@ require(['jquery'], function($) {
 
         // Update the height of the iframe.
         case 'lti.frameResize':
-          let height = message.height;
+          var height = message.height;
           if (height <= 0) height = 1;
 
           if (iframe) {
