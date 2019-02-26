@@ -78,8 +78,10 @@ require(['jquery'], function($) {
     // Listen for all messages to this window.
     window.addEventListener('message', function(e) {
 
+      var iframe = $('#contentframe')[0];
+
       // Check if the incoming message is from the LTI iframe.
-      if (e.source.frameElement && e.source.frameElement.id === 'contentframe') {
+      if (iframe.contentWindow === e.source) {
 
         // Handle the message.
         ltiMessageHandler(e);
