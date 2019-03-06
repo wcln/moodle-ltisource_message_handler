@@ -47,10 +47,10 @@ I should be adding more subjects as I continue development.
 
 ### Screenshots:
 **An LTI lesson WITHOUT using this plugin:**  
-![LTI lesson without plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_10.png)
+![LTI lesson without plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_12.png)
 
 **An LTI lesson that utilizes this plugin:**  
-![LTI lesson with plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_1.png)
+![LTI lesson with plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_11.png)
 
 
 Created by Colin Bernard (colinjbernard@hotmail.com) for [Western Canadian Learning Network](https://wcln.ca).  
