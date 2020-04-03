@@ -41,5 +41,8 @@ defined('MOODLE_INTERNAL') || die();
  * @param  array $requestparams
  */
 function ltisource_message_handler_before_launch($instance, $endpoint, $requestparams) {
-    echo '<script>'.file_get_contents('source/message_handler/js/script_injector.js').'</script>';
+    $devicetype = core_useragent::get_device_type();
+    if (! ($devicetype === core_useragent::DEVICETYPE_MOBILE || $devicetype === core_useragent::DEVICETYPE_TABLET)) {
+        echo '<script>'.file_get_contents('source/message_handler/js/script_injector.js').'</script>';
+    }
 }
