@@ -53,4 +53,4 @@ I should be adding more subjects as I continue development.
 ![LTI lesson with plugin](https://moodle.org/pluginfile.php/50/local_plugins/plugin_screenshots/2242/Screenshot_11.png)
 
 
-Created by Colin Bernard (colinjbernard@hotmail.com) for [Western Canadian Learning Network](https://wcln.ca).  
+Created by Colin Perepelken (colin@perepelken.ca) for [Western Canadian Learning Network](https://wcln.ca).  
